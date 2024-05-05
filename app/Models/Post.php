@@ -15,12 +15,14 @@ public function category()
 }
 public function team()
 {
-    return $this->belongsTo(team::class);
+    return $this->belongsTo(Team::class);
 }
 public function user()
 {
-    return $this->belongsTo(user::class);
+    return $this->belongsTo(User::class);
 }
+
+
 public function getPaginateByLimit(int $limit_count = 5)
 {
     // updated_atで降順に並べたあと、limitで件数制限をかける
