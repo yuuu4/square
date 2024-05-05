@@ -10,17 +10,15 @@
         
     </head>
     <body class="antialiased">
-        <h1>ボランティア団体交流広場</h1>
-        <div class='posts'>
-            @foreach($posts as $post)
-            <div class='post'>
-                <a href ="/posts/{{ $post->id }}"><h2 class='title'>{{$post->title}}</h2></a>
+        <h1 class ='title'>
+            {{ $post->title }}
+        <div class='content'>
+            <div class='content_post'>
+                <h3>本文</h3>
                 <p class='body'>{{ $post->body }}</p>
             </div>
-            @endforeach
-           </div>
-          <div class='paginate'>
-            {{ $posts->links() }}
         </div>
+        <div class='footer'>
+            <a href='/'>戻る</>
     </body>
 </html>
