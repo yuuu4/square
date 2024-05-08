@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
-            $table->string('content', 50);
-             $table->string('place', 50);
-            $table->string('purpose', 50);
+            $table->string('name', 100);
+            $table->string('content', 100);
+             $table->string('place', 100);
+            $table->string('purpose', 100);
             $table->timestamps();
         });
     }
