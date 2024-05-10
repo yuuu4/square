@@ -21,11 +21,17 @@
                 <input type="text" name="post[title]" placeholder="タイトル" value={{$post->title}}>
                 <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
            </div>
+           <div class='team'>
+                <h2>Team</h2>
+                <input type="text" name="post[team_name]" placeholder="チーム名" value={{$post->team_name}}>
+                <p class="team__error" style="color:red">{{ $errors->first('post.team') }}</p>
+           </div>
           <div class='body'>
           <h2>Body</2>
           <textarea name="post[body]" placeholder="今日も1日お疲れ様でした">{{$post->body}}</textarea>
           <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
         </div>
+        
         <input type="submit" value="update"/>
         </form>
         <div class="footer">

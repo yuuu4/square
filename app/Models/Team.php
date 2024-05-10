@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
-
+   
 public function posts()   
 {
     return $this->hasMany(Post::class);  
@@ -17,4 +17,6 @@ public function user()
 {
     return $this->belongsTo(User::class);
 }
+
+
 }
