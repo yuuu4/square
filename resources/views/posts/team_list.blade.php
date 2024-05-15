@@ -26,22 +26,23 @@
         
     </head>
     <body class="antialiased">
-        <h1 class ='title'>
-            {{ $post->title }}
-        <div class='content'>
-            <div class='content_post'>
-                <div class="edit">
-                <a href="/posts/{{$post->id}}/edit">edit</a>
             </div>
-            <h2>チーム名</h2>
-                <p1 class='team_name'>{{ $post->team_name }}</p1>
-                <h3>本文</h3>
-                <p2 class='body'>{{ $post->body }}</p2>
-                <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-            </div>
+            <div class='teams'>
+            @foreach($teams as $team)
+            <div class='team'>
+                <p class ='name'>{{$team->name}}</p>
+                <p class='content'>{{ $team->content }}</p>
+                <p class='purpose'>{{ $team->purpose }}</p>
+                <p class='place'>{{ $team->place }}</p>
+                <form action="/posts/registration/team_list{{$team->id}}" id="form_{{$team->id}}" method="post">
+                    @csrf
+                    </form>
+                    </div>
+            @endforeach
         </div>
             
         <div class='footer'>
-            <a href='/'>戻る</>
+            <a href='/'>戻る</a>
+            </div>
     </body>
 </html>
