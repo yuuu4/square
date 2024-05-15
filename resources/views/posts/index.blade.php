@@ -12,6 +12,8 @@
     <body class="antialiased">
         <h1>ボランティア団体交流広場</h1>
         <a href='/posts/create'>create</a>
+        <a href='/posts/registration'>登録</a>
+        <a href='/posts/registration/team_list'>団体一覧</a>
         <div class='posts'>
             @foreach($posts as $post)
             <div class='post'>
