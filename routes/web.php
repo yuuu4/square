@@ -25,7 +25,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/',[PostController::class,'index']);
+Route::get('/',[PostController::class,'index'])->name('index');;
 
 
 Route::middleware('auth')->group(function () {
@@ -34,17 +34,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/posts/create',[PostController::class,'create']);
     Route::get('posts/registration',[TeamController::class,'registration']);
-     Route::post('/posts/registration',[TeamController::class,'submit']);
+    Route::post('/posts/registration',[TeamController::class,'submit']);
     Route::get('posts/registration/team_list', [TeamController::class, 'team_list']);
     Route::get('/posts/{post}',[PostController::class,'show']);
+    Route::get('/posts/registration/team_list/{team}',[TeamController::class,'show_team']);
+    Route::put('/posts/registration/team_list/{team}', [TeamController::class,'update']);
     Route::post('/posts',[PostController::class,'store']);
     Route::get('/posts/{post}/edit',[PostController::class,'edit']);
     Route::put('/posts/{post}',[PostController::class,'update']);
     Route::delete('/posts/{post}',[PostController::class,'delete']);
+    Route::delete('/posts/registration/team_list/{team}',[TeamController::class,'delete']);
     Route::get('/categories/{category}', [CategoryController::class,'index']);
+    Route::get('/posts/{team}/list_edit',[TeamController::class,'list_edit']);
     
 });
 
 
 require __DIR__.'/auth.php';
-

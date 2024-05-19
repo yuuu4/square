@@ -26,33 +26,21 @@
         
     </head>
     <body class="antialiased">
+        <div class='content'>
+            <div class='content_post'>
+                <div class="edit">
+                <a href="/posts/{{$team->id}}/list_edit">edit</a>
             </div>
-            <div class='teams'>
-            @foreach($teams as $team)
-            <div class='team'>
-               <a href ="/posts/registration/team_list/{{ $team->id }}"><h2 class='name'>{{$team->name}}</h2></a>
+             <h1>チーム名</h1>
+          <p class='name'>{{ $team->name }}</p>
+            <h2>活動内容</h2>
                 <p class='content'>{{ $team->content }}</p>
+                 <h3>目的</h3>
                 <p class='purpose'>{{ $team->purpose }}</p>
+                 <h4>活動場所</h4>
                 <p class='place'>{{ $team->place }}</p>
-                <form action="/posts/registration/team_list/{{$team->id}}" id="form_{{$team->id}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="button" onclick="deleteTeam({{$team->id}})">delete</button>
-                    </form>
-                    </div>
-            @endforeach
-        </div>
-            <script>
-                function deleteTeam(id){
-                    'use strict'
-                    
-                    if(confirm('削除すると復元できません。\n本当に削除しますか？')){
-                       document.getElementById(`form_${id}`).submit();
-                    }
-                }
-                </script>
+               
         <div class='footer'>
-            <a href='/'>戻る</a>
-            </div>
+            <a href='/'>戻る</>
     </body>
 </html>

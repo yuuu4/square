@@ -24,8 +24,8 @@ class TeamRequest extends FormRequest
          return[
            'team.name' =>'required|string|max:100',
            'team.content'  =>'required|string|max:4000',
-           'team.place'  =>'required|string|max:300',
            'team.purpose'  =>'required|string|max:600',
+           'team.place'  =>'required|string|max:300',
            
             ];
     }
