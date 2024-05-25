@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController; 
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\ReplyController;
+
 
 
 /*
@@ -24,9 +26,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/posts/{post}/replies', [ReplyController::class, 'store_reply'])->name('posts.store_reply');
+});
 
-Route::get('/',[PostController::class,'index'])->name('index');;
-
+Route::get('/',[PostController::class,'index'])->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,10 +39,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/create',[PostController::class,'create']);
     Route::get('posts/registration',[TeamController::class,'registration']);
     Route::post('/posts/registration',[TeamController::class,'submit']);
-    Route::get('posts/registration/team_list', [TeamController::class, 'team_list']);
-    Route::get('/posts/{post}',[PostController::class,'show']);
+    Route::get('posts/registration/team_list', [TeamController::class, 'team_list'])->name('team_list');
+    
+     
+     Route::get('/posts/{post}/create_reply',[ReplyController::class,'create_reply']);
+      Route::post('/posts/{post}/store_reply', [ReplyController::class, 'store_reply'])->name('posts.store_reply');
+      Route::get('/posts/{post}/show_reply',[ReplyController::class,'show_reply'])->name('posts.show_reply');
     Route::get('/posts/registration/team_list/{team}',[TeamController::class,'show_team']);
     Route::put('/posts/registration/team_list/{team}', [TeamController::class,'update']);
+     Route::get('/posts/{post}',[PostController::class,'show']);
     Route::post('/posts',[PostController::class,'store']);
     Route::get('/posts/{post}/edit',[PostController::class,'edit']);
     Route::put('/posts/{post}',[PostController::class,'update']);

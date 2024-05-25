@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('teams', function (Blueprint $table) {
-         $table->foreignId('user_id')->default(1);
+        Schema::table('replies', function (Blueprint $table) {
+             $table->foreignId('post_id')->constrained();
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('teams', function (Blueprint $table) {
+        Schema::table('replies', function (Blueprint $table) {
             //
         });
     }

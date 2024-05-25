@@ -3,28 +3,49 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\ReplyRequest;
 use App\Models\Category;
+use App\Models\Reply;
+
+
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Request $request, Post $post)
     {
-      
-   return view('posts.index')->with(['posts' => $post->getPaginateByLimit(5)]);
-}
-    public function show(Post $post)
+       $keyword=$request->input('keyword');
+        $query=Post::query();
+        
+        if(!empty($keyword)){
+            $query->where('title','LIKE',"%{$keyword}%");
+        }
+        
+        $posts=$query->paginate(5);
+        return view('posts.index', compact('posts','keyword'));
+    }
+   
+    /*public function show(Post $post)
     {
         return view('posts/show')->with(['post'=>$post]);
-    }
-    public function create(Category $category)
+    }*/
+     public function show($id)
     {
-        
-        return view('posts.create')->with(['categories'=> $category->get()]);
+        $post = Post::findOrFail($id);
+        $replies = $post->replies; // 投稿に関連するすべての返信を取得
+
+        return view('posts.show', compact('post', 'replies'));
     }
-    public function store(PostRequest $request,Post $post)
+    
+   public function create(Category $category)
+{
+     return view('posts.create')->with(['categories' => $category->get()]);
+}
+    public function store(PostRequest $request)
     {
+         
         $input =$request['post'];
         $post->fill($input)->save();
         return redirect('/posts/'. $post->id);

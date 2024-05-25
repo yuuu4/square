@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        // ユーザーシーダーを先に実行
+        $this->call(UserSeeder::class);
+
     $this->call(PostSeeder::class);
+     $this->call(ReplySeeder::class);
 }
 }

@@ -28,6 +28,12 @@
     <body class="antialiased">
             </div>
             <div class='teams'>
+         <div>
+             <form action="{{route('team_list')}}" method="GET">
+                 <input type="text" name="keyword" value="{{$keyword}}">
+                 <input type="submit" value="検索">
+                 </form>
+                 </div>
             @foreach($teams as $team)
             <div class='team'>
                <a href ="/posts/registration/team_list/{{ $team->id }}"><h2 class='name'>{{$team->name}}</h2></a>
@@ -41,6 +47,9 @@
                     </form>
                     </div>
             @endforeach
+        </div>
+         <div class='paginate'>
+            {{ $teams->links() }}
         </div>
             <script>
                 function deleteTeam(id){
