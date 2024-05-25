@@ -14,10 +14,18 @@ class TeamController extends Controller
       return view('posts.registration')->with(['team'=>$team]);
     }
     
-    public function team_list()
+    public function team_list(Request $request)
     {
-        $teams = Team::paginate(5); 
-      return view('posts.team_list', compact('teams'));
+       
+        $keyword=$request->input('keyword');
+        $query=Team::query();
+        
+        if(!empty($keyword)){
+            $query->where('name','LIKE',"%{$keyword}%");
+        }
+        
+        $teams=$query->paginate(5);
+        return view('posts.team_list', compact('teams','keyword'));
     }
     
     public function submit(TeamRequest $request,team $team)
@@ -50,4 +58,5 @@ class TeamController extends Controller
         $team->delete();
         return redirect('/posts/registration/team_list/');
     }
+    
 }

@@ -26,8 +26,7 @@
         
     </head>
     <body class="antialiased">
-        <h1 class ='title'>
-            {{ $post->title }}
+        <h1 class ='title'>{{ $post->title }}</h1>
         <div class='content'>
             <div class='content_post'>
                 <div class="edit">
@@ -39,9 +38,10 @@
                 <p2 class='body'>{{ $post->body }}</p2>
                 <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
             </div>
+            
         </div>
             
         <div class='footer'>
-            <a href='/'>戻る</>
+            <a href='/'>戻る<a/>
     </body>
 </html>

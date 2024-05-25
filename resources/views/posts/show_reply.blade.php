@@ -26,21 +26,25 @@
         
     </head>
     <body class="antialiased">
+          <body class="antialiased">
+        <h1>ボランティア団体交流広場</h1>
+         <h1 class ='title'>{{ $post->title }}</h1>
         <div class='content'>
             <div class='content_post'>
-                <div class="edit">
-                <a href="/posts/{{$team->id}}/list_edit">edit</a>
             </div>
-             <h1>チーム名</h1>
-          <p class='name'>{{ $team->name }}</p>
-            <h2>活動内容</h2>
-                <p class='content'>{{ $team->content }}</p>
-                 <h3>目的</h3>
-                <p class='purpose'>{{ $team->purpose }}</p>
-                 <h4>活動場所</h4>
-                <p class='place'>{{ $team->place }}</p>
-               
+            <h2>チーム名</h2>
+                <p1 class='team_name'>{{ $post->team_name }}</p1>
+                <h3>本文</h3>
+                <p2 class='body'>{{ $post->body }}</p2>
+                <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+            </div>
+            </div>
+             <h1>返信</h1>
+         @foreach($replies as $reply)
+                <a href="">{{ $reply->user->name }}</a>
+                <p class='body'>{{ $reply->body }}</p>
+              @endforeach
         <div class='footer'>
-            <a href='/'>戻る<a/>
+            <a href='/posts/{{$post->id}}/create_reply'>戻る<a/>
     </body>
 </html>
