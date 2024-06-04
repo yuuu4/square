@@ -1,46 +1,37 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Blog</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <style>
-        .title {
-            font-size: 30px; /* タイトルのフォントサイズを24pxに設定 */
-        }
-
-        .body {
-            font-size: 16px; /* 本文のフォントサイズを16pxに設定 */
-        }
-
-        .edit {
-            font-size: 20px; /* 編集リンクのフォントサイズを14pxに設定 */
-        }
-        .footer {
-            font-size: 20px;
-        }
-    </style>
-
+<x-app-layout>
+    <x-slot name="header">
+         <div class=class="px-1 py-1 bg-emerald-400 text-lg">
+         <div class="font-sans font-medium text-xl">
+            {{ _('✻ボランティア団体交流広場✻') }}
+          <div>
         
-    </head>
-    <body class="antialiased">
-        <div class='content'>
+         </div>
+    </x-slot>
+    <div class="bg-white min-h-screen">
+        <div class='content pl-4'>
             <div class='content_post'>
-                <div class="edit">
-                <a href="/posts/{{$team->id}}/list_edit">edit</a>
+                <div class="edit mt-2 w-20 h-7 bg-orange-400 hover:bg-orange-100 rounded text-lg shadow-md text-white">
+                <a href="/posts/{{$team->id}}/list_edit">　編集</a>
             </div>
-             <h1>チーム名</h1>
-          <p class='name'>{{ $team->name }}</p>
-            <h2>活動内容</h2>
-                <p class='content'>{{ $team->content }}</p>
-                 <h3>目的</h3>
-                <p class='purpose'>{{ $team->purpose }}</p>
-                 <h4>活動場所</h4>
-                <p class='place'>{{ $team->place }}</p>
-               
+            <div class="text-yellow-800">
+            <div class="mb-4"></div>
+             <h1 class="pl-4">チーム名</h1>
+          <p class='name text-3xl font-medium mt-2  pl-6'>{{ $team->name }}</p>
+          <div class="mb-4"></div>
+            <h2 class="pl-4">活動内容</h2>
+                <p class='content text-3xl font-medium mt-2  pl-6'>{{ $team->content }}</p>
+                <div class="mb-4"></div>
+                 <h3 class="pl-4">目的</h3>
+                <p class='purpose text-3xl font-medium mt-2  pl-6'>{{ $team->purpose }}</p>
+                <div class="mb-4  pl-4"></div>
+                 <h4 class="pl-4">活動場所</h4>
+                <p class='place text-3xl font-medium mt-2  pl-6'>{{ $team->place }}</p>
+               </div>
+                <div class="text-lg text-sky-800 hover:text-sky-500 pl-4 mt-4">
         <div class='footer'>
             <a href='/'>戻る<a/>
-    </body>
-</html>
+    </div>
+    </div>
+</div>
+</x-app-layout>
+

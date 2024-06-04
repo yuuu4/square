@@ -8,11 +8,16 @@ use Illuminate\Support\Facades\Log;
 
 class TeamController extends Controller
 {
-     public function registration(Team $team)
+    /* public function registration(Team $team)
     {
-        $team = $team->get();
+       $team = $team->get();
       return view('posts.registration')->with(['team'=>$team]);
-    }
+    }*/
+    public function registration()
+{
+    $teams = Team::all();
+    return view('posts.registration', ['teams' => $teams]);
+}
     
     public function team_list(Request $request)
     {
