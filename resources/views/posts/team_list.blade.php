@@ -1,53 +1,46 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Blog</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <style>
-        .title {
-            font-size: 30px; /* タイトルのフォントサイズを24pxに設定 */
-        }
-
-        .body {
-            font-size: 16px; /* 本文のフォントサイズを16pxに設定 */
-        }
-
-        .edit {
-            font-size: 20px; /* 編集リンクのフォントサイズを14pxに設定 */
-        }
-        .footer {
-            font-size: 20px;
-        }
-    </style>
-
-        
-    </head>
-    <body class="antialiased">
-            </div>
-            <div class='teams'>
-         <div>
-             <form action="{{route('team_list')}}" method="GET">
-                 <input type="text" name="keyword" value="{{$keyword}}">
-                 <input type="submit" value="検索">
+<x-app-layout>
+    <x-slot name="header">
+         <div class=class="px-1 py-1 bg-emerald-400 text-lg">
+         <div class="font-sans font-medium text-xl">
+            {{ _('✻ボランティア団体交流広場✻') }}
+          <div>
+             <form action="{{route('index')}}" method="GET">
+                 <input type="text" placeholder="チーム名"  name="keyword" value="{{$keyword}}" class="absolute shadow-md text-center text-base top-10.5 right-0 h-7 w-1/3">
+                 <input type="submit" value="検索"  class="absolute top-11.5 right-0 h-7 w-10 bg-gray-500 font-mono text-white">
                  </form>
-                 </div>
+             </div>
+         </div>
+    </x-slot>
+    <div class="bg-white min-h-screen">
+            <div class='teams'>
+                 <div class="text-yellow-800">
+            <div class="grid grid-cols-1 md:grid-cols-2  gap-4">
             @foreach($teams as $team)
+             <div class="post border p-4 ">
             <div class='team'>
-               <a href ="/posts/registration/team_list/{{ $team->id }}"><h2 class='name'>{{$team->name}}</h2></a>
-                <p class='content'>{{ $team->content }}</p>
-                <p class='purpose'>{{ $team->purpose }}</p>
-                <p class='place'>{{ $team->place }}</p>
-                <form action="/posts/registration/team_list/{{$team->id}}" id="form_{{$team->id}}" method="post">
+                <div class="mb-4"></div>
+                <h1>チーム名</h1>
+               <a href ="/posts/registration/team_list/{{ $team->id }}" class="text-2xl font-medium mt-2"><h2 class='name'>{{$team->name}}</h2></a>
+               <div class="mb-4"></div>
+                <h2>活動内容</h2>
+                <p class='content text-2xl font-medium mt-2'>{{ $team->content }}</p>
+                <div class="mb-4"></div>
+                <h3>活動目的</h3>
+                <p class='purpose text-2xl font-medium mt-2'>{{ $team->purpose }}</p>
+                <div class="mb-4"></div>
+                <h4>活動場所</h4>
+                <p class='place text-2xl font-medium mt-2'>{{ $team->place }}</p>
+                <div class="w-28 h-7 bg-red-600 hover:bg-red-400 mt-2 text-lg text-white rounded shadow-md">
+       <form action="/posts/registration/team_list/{{$team->id}}" id="form_{{$team->id}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button type="button" onclick="deleteTeam({{$team->id}})">delete</button>
-                    </form>
+              <button type="button" onclick="deleteTeam({{$team->id}})">　投稿削除</button>
+        </form>
+    </div>
+                    </div>
                     </div>
             @endforeach
-        </div>
+        </div></div>
          <div class='paginate'>
             {{ $teams->links() }}
         </div>
@@ -60,8 +53,10 @@
                     }
                 }
                 </script>
+                     <div class="text-lg text-sky-800 hover:text-sky-500 pl-[5%] mt-4">
         <div class='footer'>
-            <a href='/'>戻る</a>
-            </div>
-    </body>
-</html>
+            <a href='/'>戻る<a/>
+       </div>
+    </div>
+ </x-app-layout>
+

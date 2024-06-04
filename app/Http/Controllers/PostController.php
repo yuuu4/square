@@ -43,7 +43,7 @@ class PostController extends Controller
 {
      return view('posts.create')->with(['categories' => $category->get()]);
 }
-    public function store(PostRequest $request)
+    public function store(PostRequest $request, Post $post)
     {
          
         $input =$request['post'];
@@ -51,9 +51,9 @@ class PostController extends Controller
         return redirect('/posts/'. $post->id);
         
     }
-    public function edit(Post $post)
+    public function edit(Post $post, Category $category)
     {
-        return view('posts.edit')->with(['post'=>$post]);
+        return view('posts.edit')->with(['post'=>$post])->with(['categories' => $category->get()]);
     }
     
    public function update(PostRequest $request, Post $post)
