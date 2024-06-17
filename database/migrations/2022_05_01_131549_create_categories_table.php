@@ -27,6 +27,12 @@ return new class extends Migration
      */
     public function down()
     {
+        // 外部キー制約を無効化
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('categories');
+
+        // 外部キー制約を有効化
+        Schema::enableForeignKeyConstraints();
     }
 };

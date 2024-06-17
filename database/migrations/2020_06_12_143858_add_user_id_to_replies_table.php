@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('teams', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 100);
-            $table->string('content', 100);
-             $table->string('place', 100);
-            $table->string('purpose', 100);
-            $table->timestamps();
-        });
+       Schema::table('replies', function (Blueprint $table) {
+       $table->unsignedBigInteger('user_id');
+       $table->foreign('user_id')->references('id')->on('users');
+    });
     }
 
     /**
@@ -30,7 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teams');
+        Schema::table('replies', function (Blueprint $table) {
+            //
+        });
     }
 };
-

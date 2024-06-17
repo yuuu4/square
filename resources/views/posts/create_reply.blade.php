@@ -37,6 +37,7 @@
         @endforeach
     </select>
 </div>
+
 <div class="mb-4"></div>
     <div class="pl-6">
 <textarea name="reply[body]" placeholder="素敵な投稿です" class="w-80 h-24 p-2">{{old('reply.body')}}</textarea>

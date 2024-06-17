@@ -21,9 +21,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         // ユーザーシーダーを先に実行
-        $this->call(UserSeeder::class);
-
-    $this->call(PostSeeder::class);
-     $this->call(ReplySeeder::class);
+       $this->call([
+            TeamSeeder::class,
+            PostSeeder::class,
+            ReplySeeder::class
+           
+ ]);
 }
 }
