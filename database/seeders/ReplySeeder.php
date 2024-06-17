@@ -17,7 +17,8 @@ class ReplySeeder extends Seeder
     public function run()
     {
         DB::table('replies')->insert([
-                'body' => '命名はデータを基準に考える',
+                'body' => '素敵な投稿です！',
+                'post_id'=>1,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);

@@ -36,6 +36,7 @@ use App\Http\Controllers\ReplyController;
     Route::get('/posts/{post}/edit','edit')->name('edit');
     Route::put('/posts/{post}','update')->name('update');
     Route::delete('/posts/{post}','delete')->name('delete');
+    Route::post('/posts/like','like')->name('post.like');
 });
     
     

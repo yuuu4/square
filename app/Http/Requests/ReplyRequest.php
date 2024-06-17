@@ -22,7 +22,7 @@ class ReplyRequest extends FormRequest
     public function rules()
     {
          return[
-           'reply.body' =>'required|string|max:600',
+           'reply.body' =>'required|string|max:100',
            
             ];
     }
