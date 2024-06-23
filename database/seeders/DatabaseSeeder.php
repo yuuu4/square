@@ -22,9 +22,11 @@ class DatabaseSeeder extends Seeder
         // ]);
         // ユーザーシーダーを先に実行
        $this->call([
+            CategorySeeder::class,
             TeamSeeder::class,
             PostSeeder::class,
-            ReplySeeder::class
+            ReplySeeder::class,
+            UserSeeder::class,
            
  ]);
 }
