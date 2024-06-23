@@ -17,40 +17,39 @@ class PostController extends Controller
     
    public function index(Request $request, Post $post)
 {   
-    $category = $request->input('category');
-    $keyword = $request->input('keyword');
+        $category = $request->input('category');
+        $keyword = $request->input('keyword');
     
-    $categories_list = Category::all();
+        $categories_list = Category::all();
    
-    $query = Post::query();
+        $query = Post::query()->withCount('likes');
         
 
-     if (!empty($category) && $category != 'all') {
+    if(!empty($category)) {
         $query->where('category_id', $category);
-    }
+        }
     
     if (!empty($keyword)) {
         $query->where('team_name', 'LIKE', "%{$keyword}%");
     }
     
-     if (!empty($category) && !empty($keyword)) {
+    if (!empty($category) && !empty($keyword)) {
         $query->where('category_id', $category)
               ->where('team_name', 'LIKE', "%{$keyword}%");
     }
      
-    $posts = $query->paginate(5);
+        $posts = $query->paginate(5);
     
-    $param = [
-        'posts' => $posts,
-        'keyword' => $keyword,
-        'category'=>$category,
-        'categories_list' => $categories_list, 
-        'items'=>$categories_list
+        $param = [
+            'posts' => $posts,
+            'keyword' => $keyword,
+            'category'=>$category,
+            'categories_list' => $categories_list, 
+            'items'=>$categories_list,
     ];
     
-
      
-    return view('posts.index', $param);
+        return view('posts.index', $param);
 }
    
     /*public function show(Post $post)
@@ -87,22 +86,23 @@ class PostController extends Controller
     
    public function update(PostRequest $request, Post $post)
 {
-    $input_post = $request['post'];
-    $post->fill($input_post)->save();
+        $input_post = $request['post'];
+        $post->fill($input_post)->save();
 
-    return redirect('/posts/'. $post->id);
+        return redirect('/posts/'. $post->id);
 }
   public function delete(Post $post)
   {
-      $post->delete();
-      return redirect('/');
+        $post->delete();
+        
+        return redirect('/');
   }
   
   public function like(Request $request)
 {
-    $user_id = Auth::user()->id; //1.ログインユーザーのid取得
-    $post_id = $request->post_id; //2.投稿idの取得
-    $already_liked = Like::where('user_id', $user_id)->where('post_id', $post_id)->first(); //3.
+        $user_id = Auth::user()->id; //1.ログインユーザーのid取得
+        $post_id = $request->post_id; //2.投稿idの取得
+        $already_liked = Like::where('user_id', $user_id)->where('post_id', $post_id)->first(); //3.
 
     if (!$already_liked) { //もしこのユーザーがこの投稿にまだいいねしてなかったら
         $like = new Like; //4.Likeクラスのインスタンスを作成
@@ -113,10 +113,11 @@ class PostController extends Controller
         Like::where('post_id', $post_id)->where('user_id', $user_id)->delete();
     }
     //5.この投稿の最新の総いいね数を取得
-    $post_likes_count = Post::withCount('likes')->findOrFail($post_id)->likes_count;
-    $param = [
+        $post_likes_count = Post::withCount('likes')->findOrFail($post_id)->likes_count;
+        $param = [
         'post_likes_count' => $post_likes_count,
     ];
-    return response()->json($param); //6.JSONデータをjQueryに返す
+    
+        return response()->json($param); //6.JSONデータをjQueryに返す
 }
 }
