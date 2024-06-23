@@ -25,11 +25,12 @@ class TeamController extends Controller
         $keyword=$request->input('keyword');
         $query=Team::query();
         
-        if(!empty($keyword)){
-            $query->where('name','LIKE',"%{$keyword}%");
+    if(!empty($keyword)){
+        $query->where('name','LIKE',"%{$keyword}%");
         }
         
         $teams=$query->paginate(5);
+        
         return view('posts.team_list', compact('teams','keyword'));
     }
     

@@ -15,12 +15,12 @@ class ReplyController extends Controller
      
     public function create_reply(Post $post, Reply $reply)
 {
-    $user = Auth::user();
+        $user = Auth::user();
 
         if (!$user) {
-     abort(403, 'Unauthorized action.');
+        abort(403, 'Unauthorized action.');
      }
-       $users = User::where('id', $user->id)->get();
+        $users = User::where('id', $user->id)->get();
         $replies = Reply::all();
         return view('posts/create_reply',['post' => $post, 'reply' => $reply, 'replies' => $replies,'users'=>$users]);
     }
@@ -28,22 +28,22 @@ class ReplyController extends Controller
      
      public function store_reply(ReplyRequest $request, Post $post)
      {
-          $userId = $request->input('reply.user_id');
+         $userId = $request->input('reply.user_id');
          $user = User::find($userId);
 
-    if (!$user) {
+        if (!$user) {
         // エラーハンドリング: ユーザーが存在しない場合
         abort(403, 'Unauthorized action.');
     }
         
-    $replyBody = $request->input('reply.body');
-    $reply = new Reply();
-    $reply->body = $replyBody;
-    $reply->post_id = $post->id;
-    $reply->user_id = $user->id;
-    $reply->save();
+        $replyBody = $request->input('reply.body');
+        $reply = new Reply();
+        $reply->body = $replyBody;
+        $reply->post_id = $post->id;
+        $reply->user_id = $user->id;
+        $reply->save();
 
-            return redirect()->route('posts.show_reply', ['post' => $post->id]);
+        return redirect()->route('posts.show_reply', ['post' => $post->id]);
     }
 
 
