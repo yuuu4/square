@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->string('body', 1000);
                 $table->timestamps();
                 $table->softDeletes();
-                $table->unsignedBigInteger('team_id')->nullable()->change();
+               
             });
         }
     }
