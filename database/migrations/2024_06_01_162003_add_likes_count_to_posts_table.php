@@ -12,10 +12,14 @@ class AddLikesCountToPostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger('likes_count')->default(0);
+               Schema::table('posts', function (Blueprint $table) {
+            // Check if 'likes_count' column does not exist before adding
+            if (!Schema::hasColumn('posts', 'likes_count')) {
+                $table->unsignedBigInteger('likes_count')->default(0);
+            }
         });
     }
+
 
     /**
      * Reverse the migrations.

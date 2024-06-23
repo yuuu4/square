@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-       $table->foreign('user_id')->references('id')->on('users');
-       if (!Schema::hasColumn('teams', 'user_id')) {
-        $table->bigInteger('user_id')->unsigned()->nullable();
-    }
-    
+      Schema::table('teams', function (Blueprint $table) {
+            // Check if column 'user_id' does not exist before adding
+            if (!Schema::hasColumn('teams', 'user_id')) {
+                $table->bigInteger('user_id')->unsigned()->nullable();
+                $table->foreign('user_id')->references('id')->on('users');
+            }
+        });
     }
 
     /**

@@ -14,9 +14,12 @@ return new class extends Migration
     public function up()
 {
     Schema::table('posts', function (Blueprint $table) {
-        $table->string('team_name', 100)->nullable();
-    });
-}
+            // Check if 'team_name' column does not exist before adding
+            if (!Schema::hasColumn('posts', 'team_name')) {
+                $table->string('team_name', 100)->nullable();
+            }
+        });
+    }
     /**
      * Reverse the migrations.
      *

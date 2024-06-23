@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('replies', function (Blueprint $table) {
-            $table->id();
-             $table->text('body');
-            $table->timestamps();
-             $table->softDeletes();
-        });
+        if (!Schema::hasTable('replies')) {
+            Schema::create('replies', function (Blueprint $table) {
+                $table->id();
+                $table->text('body');
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
-
     /**
      * Reverse the migrations.
      *

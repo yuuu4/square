@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('team_id')->constrained();  
+            // Check if 'team_id' column does not exist before adding
+            if (!Schema::hasColumn('posts', 'team_id')) {
+                $table->foreignId('team_id')->constrained();
+            }
         });
     }
 
