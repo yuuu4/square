@@ -31,6 +31,15 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+       if (!Schema::hasTable('posts')) {
+            Schema::create('posts', function (Blueprint $table) {
+                $table->id();
+                $table->string('title', 100);
+                $table->string('body', 1000);
+                $table->timestamps();
+                $table->softDeletes();
+                $table->unsignedBigInteger('team_id')->nullable()->change();
+            });
+        }
     }
 };
