@@ -12,12 +12,11 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::table('posts', function (Blueprint $table) {
-        $table->foreignId('category_id')->constrained();  
-        });
-    }
-
+{
+    Schema::table('posts', function (Blueprint $table) {
+        $table->string('team_name', 100)->nullable();
+    });
+}
     /**
      * Reverse the migrations.
      *

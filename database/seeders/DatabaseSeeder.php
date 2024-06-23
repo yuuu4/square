@@ -20,5 +20,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-    }
+        // ユーザーシーダーを先に実行
+       $this->call([
+            TeamSeeder::class,
+            PostSeeder::class,
+            ReplySeeder::class
+           
+ ]);
+}
 }

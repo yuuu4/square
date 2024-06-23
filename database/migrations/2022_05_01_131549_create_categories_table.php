@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-             $table->id();
+        $table->id();
         $table->string('name', 50);
         $table->timestamps();
         });
@@ -27,6 +27,12 @@ return new class extends Migration
      */
     public function down()
     {
+        // 外部キー制約を無効化
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('categories');
+
+        // 外部キー制約を有効化
+        Schema::enableForeignKeyConstraints();
     }
 };

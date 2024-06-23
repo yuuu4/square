@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post_user', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            $table->string('content', 500);
+             $table->string('place', 500);
+            $table->string('purpose', 500);
             $table->timestamps();
-            $table->foreignId('post_id')->constrained('posts');   //参照先のテーブル名を
-            $table->foreignId('user_id')->constrained('users');    //constrainedに記載
-            $table->primary(['post_id', 'user_id']);  
         });
     }
 
@@ -29,6 +30,12 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_user');
+        Schema::disableForeignKeyConstraints();
+
+        Schema::dropIfExists('teams');
+
+        // 外部キー制約を有効化
+        Schema::enableForeignKeyConstraints();
     }
 };
+
