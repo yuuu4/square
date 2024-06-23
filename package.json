@@ -17,5 +17,9 @@
         "dev": "vite",
         "build": "vite build", 
         "heroku-postbuild": "npm run build"
+    },
+    
+    "engines": {
+        "node": "18.17.1"
     }
 }
