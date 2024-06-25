@@ -19,7 +19,9 @@
 PHP、js、tailwindcss、html、breeze、DB、laravel
 
 <h1>ER図</h1>
-<p align="center"><img src="![ER図](https://github.com/yuuu4/square/assets/165645141/db2cf388-d1d5-464b-9e46-982f7c86521b)" width="400"></p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/yuuu4/square/assets/165645141/db2cf388-d1d5-464b-9e46-982f7c86521b" width="400">
+</p>
 
 <h1>その他</h1>
 
