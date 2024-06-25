@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+ <img src=
 <h1>アプリの概要</h1>
 <p>ボランティア団体が交流し、情報を交換し合うことが出来るアプリ。1000文字以内で文章を投稿したり、返信、検索、いいねが出来る。
 団体の簡単な紹介(活動内容、活動場所など)を登録するページもある。
