@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/yuuu4/square/assets/165645141/db2cf388-d1d5-464b-9e46-982f7c86521b" width="400">
+  <img src="https://github.com/yuuu4/square/assets/165645141/d8afaf42-8821-4206-bad6-e874c9a62fef" width="600" high="400">
 </p>
 <h1>アプリの概要</h1>
 <p>ボランティア団体が交流し、情報を交換し合うことが出来るアプリ。1000文字以内で文章を投稿したり、返信、検索、いいねが出来る。
@@ -27,5 +27,8 @@ PHP、js、tailwindcss、html、breeze、DB、laravel
 </p>
 
 <h1>その他</h1>
-
+<p>工夫点</p>
+<p>各投稿に返信出来るように紐づけた<br>
+利用しやすいように投稿ページと団体の紹介ページを分けた
+</p>
 
