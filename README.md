@@ -1,4 +1,3 @@
- <img src="![ER図](https://github.com/yuuu4/square/assets/165645141/db2cf388-d1d5-464b-9e46-982f7c86521b)">
 <h1>アプリの概要</h1>
 <p>ボランティア団体が交流し、情報を交換し合うことが出来るアプリ。1000文字以内で文章を投稿したり、返信、検索、いいねが出来る。
 団体の簡単な紹介(活動内容、活動場所など)を登録するページもある。
@@ -20,6 +19,7 @@
 PHP、js、tailwindcss、html、breeze、DB、laravel
 
 <h1>ER図</h1>
+<img src="![ER図](https://github.com/yuuu4/square/assets/165645141/db2cf388-d1d5-464b-9e46-982f7c86521b)">
 
 <h1>その他</h1>
 
