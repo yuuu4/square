@@ -22,8 +22,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         // ユーザーシーダーを先に実行
        $this->call([
-            UserSeeder::class,
-            CategorySeeder::class,
+            PostSeeder::class,
            
  ]);
 }
