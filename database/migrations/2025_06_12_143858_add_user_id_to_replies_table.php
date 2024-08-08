@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('team_id')->constrained();  
-        });
+       Schema::table('replies', function (Blueprint $table) {
+       $table->unsignedBigInteger('user_id');
+       $table->foreign('user_id')->references('id')->on('users');
+       
+    });
     }
 
     /**
@@ -25,7 +27,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
+        Schema::table('replies', function (Blueprint $table) {
             //
         });
     }

@@ -12,11 +12,12 @@ return new class extends Migration
      * @return void
      */
     public function up()
-{
-    Schema::table('posts', function (Blueprint $table) {
-        $table->string('team_name', 100)->nullable();
-    });
-}
+    {
+        Schema::table('teams', function (Blueprint $table) {
+          $table->softDeletes();
+        });            
+    }
+
     /**
      * Reverse the migrations.
      *
@@ -24,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
+        Schema::table('teams', function (Blueprint $table) {
             //
         });
     }

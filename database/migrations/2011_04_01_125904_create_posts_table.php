@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('replies')) {
-            Schema::create('replies', function (Blueprint $table) {
+        if (!Schema::hasTable('posts')) {
+            Schema::create('posts', function (Blueprint $table) {
                 $table->id();
-                $table->text('body');
+                $table->string('title', 100);
+                $table->string('body', 1000);
                 $table->timestamps();
                 $table->softDeletes();
+                $table->unsignedBigInteger('team_id')->nullable();
             });
         }
     }
@@ -29,6 +31,5 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('replies');
     }
 };

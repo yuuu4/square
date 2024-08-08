@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class=class="px-1 py-1 bg-emerald-400 text-lg">
             <div class="font-sans font-medium text-xl">
-                {{ _('✻ボランティア団体交流広場✻') }}
+                {{ __('✻ボランティア団体交流広場✻') }}
             </div>
         </div>
     </x-slot>

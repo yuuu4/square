@@ -1,9 +1,10 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLikesCountToPostsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +14,10 @@ class AddLikesCountToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger('likes_count')->default(0);
+            // Check if 'team_id' column does not exist before adding
+            if (!Schema::hasColumn('posts', 'team_id')) {
+                $table->foreignId('team_id')->constrained();
+            }
         });
     }
 
@@ -25,7 +29,7 @@ class AddLikesCountToPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('likes_count');
+            //
         });
     }
-}
+};
